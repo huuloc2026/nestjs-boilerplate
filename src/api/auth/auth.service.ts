@@ -5,8 +5,8 @@ import { UsersService } from '../users/users.service';
 
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
-import { PrismaService } from '../prisma/prisma.service';
-import { User } from 'src/users/entities/user.entity';
+import { PrismaService } from '../../prisma/prisma.service';
+import { User } from '@/api/users/entities/user.entity';
 
 @Injectable()
 export class AuthService {

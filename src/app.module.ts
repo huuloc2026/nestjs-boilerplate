@@ -6,8 +6,8 @@ import { APP_GUARD } from '@nestjs/core';
 
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { AuthModule } from './api/auth/auth.module';
+import { UsersModule } from './api/users/users.module';
 import configuration from './config/configuration';
 import { ThrottlerBehindProxyGuard } from './common/guard/throttler.guard';
 
