@@ -13,8 +13,8 @@
     "keepClassNames": true
   },
   "module": {
-    "type": "commonjs",
-    "lazyImport": true
+    "type": "commonjs"
+    // "lazyImport": true
   },
   "sourceMaps": true
 }

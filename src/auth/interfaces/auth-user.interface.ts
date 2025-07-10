@@ -6,5 +6,5 @@ export interface AuthUser {
   email: string;
   roles: Role[];
   isActive: boolean;
-  // Add other properties you want available on the request.user object
+ 
 }

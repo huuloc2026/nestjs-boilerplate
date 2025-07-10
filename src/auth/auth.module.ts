@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-
-
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { PrismaModule } from 'src/database/prisma.module';
 import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
@@ -24,14 +22,13 @@ import { LocalStrategy } from './strategies/local.strategy';
     PrismaModule,
     PassportModule,
     JwtModule.registerAsync({
-      imports: [ConfigService],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('app.jwtSecret'),
         signOptions: { expiresIn: configService.get<string>('app.jwtExpiresIn') },
       }),
     }),
-    MailModule, // Integrate mail module for auth-related emails
+    
   ],
   providers: [
     AuthService,

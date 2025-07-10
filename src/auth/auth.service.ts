@@ -23,7 +23,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
-    private readonly mailService: MailService, // Inject MailService
+    // private readonly mailService: MailService, 
   ) {}
 
   /**

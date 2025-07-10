@@ -54,8 +54,8 @@ export class AuthController {
   }
 
   @Get('profile')
-  @ApiBearerAuth('access-token') // Reference the security scheme defined in main.ts
-  @UseGuards(JwtAuthGuard) // Protect this endpoint with JWT
+  @ApiBearerAuth('access-token') 
+  @UseGuards(JwtAuthGuard) 
   @ApiOperation({ summary: 'Get current user profile' })
   @ApiResponse({ status: 200, description: 'User profile retrieved successfully.' })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
@@ -92,9 +92,7 @@ export class AuthController {
 
   // Add similar endpoints for other social providers (GitHub, Facebook, etc.)
 
-  // --- BetterAuth Integration (Conceptual) ---
-  // This would depend heavily on the BetterAuth SDK/API you are using.
-  // It might involve sending tokens to BetterAuth or receiving webhooks.
+
 
   @Post('betterauth/verify')
   @ApiOperation({ summary: 'Verify a BetterAuth token/session' })
