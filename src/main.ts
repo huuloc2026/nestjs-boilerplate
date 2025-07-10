@@ -14,6 +14,7 @@ async function bootstrap() {
 
   // Compression
   app.use(compression());
+  app.enableShutdownHooks();
 
   // Global validation pipe
   app.useGlobalPipes(
