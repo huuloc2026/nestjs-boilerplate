@@ -16,33 +16,6 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false,
-    
-    "paths": {
-      "@/api/*": ["src/api/*"],
-      "@/background/*": ["v0/background/*"],
-      "@/common/*": ["v0/common/*"],
-      "@/config/*": ["src/config/*"],
-      "@/constants/*": ["src/constants/*"],
-      "@/database/*": ["src/database/*"],
-      "@/decorators/*": ["src/decorators/*"],
-      "@/exceptions/*": ["src/exceptions/*"],
-      "@/filters/*": ["src/filters/*"],
-      "@/generated/*": ["src/generated/*"],
-      "@/guards/*": ["src/guards/*"],
-      "@/interceptors/*": ["src/interceptors/*"],
-      "@/libs/*": ["src/libs/*"],
-      "@/mail/*": ["src/mail/*"],
-      "@/redis/*": ["src/redis/*"],
-      "@/shared/*": ["src/shared/*"],
-      "@/utils/*": ["v0/utils/*"]
-    }
-  },
-  "exclude": [
-      "node_modules",
-      "dist",
-      "src/**/*.spec.ts",
-      "v0/background/queues/*",
-      "v0/*",
-    ],
+    "noFallthroughCasesInSwitch": false
+  }
 }
