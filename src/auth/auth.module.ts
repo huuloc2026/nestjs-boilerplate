@@ -20,6 +20,7 @@ import { LocalStrategy } from './strategies/local.strategy';
   imports: [
     UserModule,
     PrismaModule,
+    MailModule,
     PassportModule,
     JwtModule.registerAsync({
       inject: [ConfigService],

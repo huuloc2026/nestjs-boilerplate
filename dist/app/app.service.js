@@ -17,7 +17,7 @@ function _ts_decorate(decorators, target, key, desc) {
 }
 let AppService = class AppService {
     getHello() {
-        return 'Hello World!';
+        return 'Hello World from Jake Onyx - My Boilerplate 2025!';
     }
 };
 AppService = _ts_decorate([

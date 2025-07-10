@@ -35,7 +35,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Register a new user with email and password' })
   @ApiResponse({ status: 201, description: 'User successfully registered.', type: AuthRegisterDto })
   @ApiResponse({ status: 409, description: 'User with this email already exists.' })
-  async register(@Body(ValidationPipe) authRegisterDto: AuthRegisterDto): Promise<User> {
+  async register(@Body() authRegisterDto: AuthRegisterDto): Promise<User> {
     const user = await this.authService.register(authRegisterDto);
     // Remove sensitive data before sending to client
     // delete user.password;
@@ -43,11 +43,11 @@ export class AuthController {
   }
 
   @Post('login')
-  @HttpCode(HttpStatus.OK) // Explicitly set status to 200 OK
+  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Log in with email and password to get JWT' })
   @ApiResponse({ status: 200, description: 'User successfully logged in.', type: TokenResponseDto })
   @ApiResponse({ status: 401, description: 'Invalid credentials.' })
-  @UseGuards(LocalAuthGuard) // Apply LocalAuthGuard to validate credentials
+  @UseGuards(LocalAuthGuard) 
   async login(@Request() req): Promise<TokenResponseDto> {
     // Passport's LocalStrategy will attach the validated user to req.user
     return this.authService.login(req.user);
