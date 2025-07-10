@@ -1,32 +1,44 @@
-// auth/auth.module.ts
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { UsersModule } from '../users/users.module';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
+
+
+
+import { PrismaModule } from 'src/database/prisma.module';
+import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
 import { AuthService } from './auth.service';
-import { LocalStrategy } from './local.strategy';
-import { JwtStrategy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
-import { PrismaModule } from '../prisma/prisma.module';
+import { MailModule } from 'src/modules/mail/mail.module';
+import { UserModule } from 'src/modules/user/user.module';
+import { LocalStrategy } from './strategies/local.strategy';
+
+
+
+
+// Import social strategies here as you add them (GoogleStrategy, GitHubStrategy, etc.)
 
 @Module({
   imports: [
-    UsersModule,
-    PassportModule,
+    UserModule,
     PrismaModule,
+    PassportModule,
     JwtModule.registerAsync({
-      imports: [ConfigModule],
+      imports: [ConfigService],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get('jwt.secret'),
-        signOptions: {
-          expiresIn: configService.get('jwt.expirationTime'),
-        },
+        secret: configService.get<string>('app.jwtSecret'),
+        signOptions: { expiresIn: configService.get<string>('app.jwtExpiresIn') },
       }),
     }),
+    MailModule, // Integrate mail module for auth-related emails
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    JwtStrategy,
+    LocalStrategy, // Provide LocalStrategy
+    // Add social strategies here (e.g., GoogleStrategy, GitHubStrategy)
+  ],
   controllers: [AuthController],
   exports: [AuthService],
 })

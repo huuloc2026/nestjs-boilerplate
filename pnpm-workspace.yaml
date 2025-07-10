@@ -1,9 +1,4 @@
 onlyBuiltDependencies:
   - '@nestjs/core'
-  - '@prisma/client'
-  - '@prisma/engines'
-  - '@scarf/scarf'
   - '@swc/core'
-  - nestjs-pino
   - pino-datadog-transport
-  - prisma

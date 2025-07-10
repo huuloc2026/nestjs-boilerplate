@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -17,11 +16,6 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-<<<<<<< HEAD
-    "noFallthroughCasesInSwitch": false,
-    
-=======
     "noFallthroughCasesInSwitch": false
->>>>>>> parent of 7643dd7 (updated)
   }
 }
