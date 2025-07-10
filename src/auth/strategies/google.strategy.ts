@@ -18,16 +18,17 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       clientSecret: configService.get<string>('app.googleClientSecret'),
       callbackURL: 'http://localhost:3000/api/auth/google/callback', // Update with your actual callback URL
       scope: ['email', 'profile'],
+      passReqToCallback: true,    
     });
   }
 
-  async validate(
+  async validate(req:any,
     accessToken: string,
     refreshToken: string,
     profile: any,
     done: VerifyCallback,
   ): Promise<any> {
-    const { name, emails, id } = profile;
+    const { name, emails, id, photos } = profile;
     const userEmail = emails && emails.length > 0 ? emails[0].value : null;
 
     if (!userEmail) {
@@ -40,7 +41,9 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       name.givenName,
       name.familyName,
       'google',
+      // picture: photos[0].value,
       id,
+      
     );
 
     done(null, user); // Pass the user object to Passport

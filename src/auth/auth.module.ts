@@ -10,6 +10,7 @@ import { AuthController } from './auth.controller';
 import { MailModule } from 'src/modules/mail/mail.module';
 import { UserModule } from 'src/modules/user/user.module';
 import { LocalStrategy } from './strategies/local.strategy';
+import { GoogleStrategy } from './strategies/google.strategy';
 
 
 
@@ -36,6 +37,7 @@ import { LocalStrategy } from './strategies/local.strategy';
     JwtStrategy,
     LocalStrategy, // Provide LocalStrategy
     // Add social strategies here (e.g., GoogleStrategy, GitHubStrategy)
+    GoogleStrategy,
   ],
   controllers: [AuthController],
   exports: [AuthService],
